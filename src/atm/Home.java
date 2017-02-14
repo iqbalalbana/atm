@@ -14,6 +14,7 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    public static int saldo = 50000;
     public Home() {
         initComponents();
     }
@@ -117,10 +118,9 @@ public class Home extends javax.swing.JFrame {
 
     private void informasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informasiActionPerformed
         int z;
-        int tab=50000;
         
         javax.swing.JOptionPane.showMessageDialog(null, "Saldo Anda saat ini "
-                        + "sebesar : " + tab);
+                        + "sebesar : " + saldo);
         z=javax.swing.JOptionPane.showConfirmDialog(null,"Melanjutkan transaksi lain?","ATM BANK RAKYAT SEMESTA", 
                 javax.swing.JOptionPane.YES_NO_OPTION, 3); //konfirmasi transaksi lain 
                 if (z==0) { 
@@ -135,15 +135,14 @@ public class Home extends javax.swing.JFrame {
 
     private void setorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setorActionPerformed
         String str;
-        int str1;
-        int s,z,t;
-        int tab=50000;
+        int s,z;
         
         str = javax.swing.JOptionPane.showInputDialog(null,"Masukkan jumlah penyetoran : " ); //menabung 
-        str1 = Integer.parseInt(str);
-        s = tab + str1;
-        javax.swing.JOptionPane.showMessageDialog(null, "Saldo Anda saat ini : " + s);
-        z=javax.swing.JOptionPane.showConfirmDialog(null,"Melanjutkan transaksi lain?","ATM BANK RAKYAT SEMESTA", 
+        s = Integer.parseInt(str); setor hasil = new setor(); 
+        hasil.menabung(saldo, s); 
+        saldo =hasil.getsaldo();
+        javax.swing.JOptionPane.showMessageDialog(null, "Saldo Anda saat ini : " + saldo);
+        z = javax.swing.JOptionPane.showConfirmDialog(null,"Melanjutkan transaksi lain?","ATM BANK RAKYAT SEMESTA", 
                 javax.swing.JOptionPane.YES_NO_OPTION, 3); //konfirmasi transaksi lain 
                 if (z==0) { 
                     new Home().setVisible(true);
@@ -157,14 +156,14 @@ public class Home extends javax.swing.JFrame {
 
     private void tarikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarikActionPerformed
         String trk;
-        int trk1;
-        int s,z,t;
-        int tab=50000;
+        int t,z;
         
         trk = javax.swing.JOptionPane.showInputDialog(null,"Masukkan jumlah penarikan : " ); //menabung 
-        trk1 = Integer.parseInt(trk);
-        s = tab - trk1;
-        javax.swing.JOptionPane.showMessageDialog(null, "Saldo Anda saat ini : " + s);
+        t = Integer.parseInt(trk); 
+        tarik mengambil = new tarik(); 
+        mengambil.ambil(saldo,t); 
+        saldo = mengambil.getsaldo();
+        javax.swing.JOptionPane.showMessageDialog(null, "Saldo Anda saat ini : " + saldo);
         z=javax.swing.JOptionPane.showConfirmDialog(null,"Melanjutkan transaksi lain?","ATM BANK RAKYAT SEMESTA", 
                 javax.swing.JOptionPane.YES_NO_OPTION, 3); //konfirmasi transaksi lain 
                 if (z==0) { 
